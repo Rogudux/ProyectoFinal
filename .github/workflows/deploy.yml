@@ -18,7 +18,9 @@ jobs:
 
 
             - name: crear imagen
-              run: docker build -t bastian13579/proyectofinal:latest .
+              run: |
+                cd backend 
+                docker build -t bastian13579/proyectofinal:latest .
 
             - name: subir a repositorio de docker
               run: docker push bastian13579/proyectofinal:latest
