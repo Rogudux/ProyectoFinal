@@ -1,0 +1,24 @@
+name: deploy to dockerhub
+
+on: 
+    push:
+        branches:
+            - main
+
+jobs:
+    build-publish:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: clonar repositorio
+              uses: actions/checkout@v4 
+
+            - name: Login to Docker Hub
+              run: docker login -u "${{ secrets.DOCKER_USERNAME }}" -p "${{ secrets.DOCKER_PASSWORD }}"
+
+
+            - name: crear imagen
+              run: docker build -t bastian13579/proyectofinal:latest .
+
+            - name: subir a repositorio de docker
+              run: docker push bastian13579/proyectofinal:latest
