@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  incident-app:
+    image: bastian13579/proyectofinal:latest
+    container_name: MarcoApi
+    ports:
+      - "3000:3033"
+    environment:
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_CLUSTER: ${DB_CLUSTER}
+      DB_NAME: ${DB_NAME}
+      VIRTUAL_HOST: ${DOMAIN}
+      VIRTUAL_PATH: /
+      LETSENCRYPT_HOST: ${DOMAIN}
+      LETSENCRYPT_EMAIL: ${USER_EMAIL}
